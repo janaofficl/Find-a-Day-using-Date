@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class sample {
+     
+    public static int calculateDay(int day,int month,int year){
+        if(month == 1 || month == 2){
+            month +=12;
+            year--;
+        }
+        int d=day;
+        int m=month;
+        int yc=year%100;
+        int yz=year/100;
+        int ans=(d + (13*(m+1))/5+yc +(yc/4)+(yz/4)+5*yz)%7;
+        return ans;
+    }
+    public static String dayName(int weekofday){
+        String[] daynames={"Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"};
+        return daynames[weekofday];
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter a Date:");
+        int day=scan.nextInt();
+        System.out.println("Enter a Month:");
+        int month=scan.nextInt();
+        System.out.println("Enter a Year:");
+        int year=scan.nextInt();
+        int weekofday = calculateDay(day, month, year);
+        String days=dayName(weekofday);
+        System.out.println("The Given Date is " +day+"."+month+"."+year);
+        System.out.println("Day:" +days);
+    }
+}
